@@ -1,0 +1,33 @@
+[tool.poetry]
+name = "llm-rag-deployed"
+version = "0.1.0"
+description = ""
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+packages = [
+    { include = "app" },
+]
+
+[tool.poetry.dependencies]
+python = ">=3.11,<3.12"
+uvicorn = "^0.23.2"
+langserve = {extras = ["server"], version = ">=0.0.30"}
+pydantic = "<2"
+tqdm = "^4.66.4"
+unstructured = {extras = ["all-docs"], version = "^0.13.7"}
+langchain-openai = "^0.1.6"
+langchain-experimental = "^0.0.58"
+langchain-community = "^0.0.38"
+tiktoken = "^0.6.0"
+psycopg = "^3.1.19"
+pgvector = "^0.2.5"
+python-dotenv = "^1.0.1"
+psycopg-binary = "^3.1.19"
+
+
+[tool.poetry.group.dev.dependencies]
+langchain-cli = ">=0.0.15"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
