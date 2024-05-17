@@ -17,9 +17,15 @@ from langchain_core.messages.utils import get_buffer_string
 
 load_dotenv()
 
+user = os.environ['DATABASE_USER']
+password = os.environ['DATABASE_PASSWORD']
+host = os.environ['DATABASE_HOST']
+port = os.environ['DATABASE_PORT']
+db_name = os.environ['DATABASE_NAME']
+
 vector_store = PGVector(
     collection_name="collectionragappdeployed",
-    connection_string="postgresql+psycopg://postgres:langsmith@localhost:5432/ragappdeployed",
+    connection_string = f"postgresql+psycopg://{user}:{password}@{host}:{port}/{db_name}"
     embedding_function=OpenAIEmbeddings()
 )
 
