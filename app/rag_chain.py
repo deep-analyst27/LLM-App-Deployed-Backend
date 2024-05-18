@@ -22,6 +22,7 @@ password = os.environ['DATABASE_PASSWORD']
 host = os.environ['DATABASE_HOST']
 port = os.environ['DATABASE_PORT']
 db_name = os.environ['DATABASE_NAME']
+db_name_new = os.environ['DATABASE_NAME_NEW']
 
 vector_store = PGVector(
     collection_name="collectionragappdeployed",
@@ -60,7 +61,7 @@ old_chain = (
         )
 ).with_types(input_type=RagInput)
 
-postgres_memory_url = "postgresql+psycopg://postgres:langsmith@localhost:5432/deployedraghistory"
+postgres_memory_url = f"postgresql+psycopg://{user}:{password}@{host}:{port}/{db_name_new}"
 
 get_session_history = lambda session_id: SQLChatMessageHistory(
     connection_string=postgres_memory_url,
