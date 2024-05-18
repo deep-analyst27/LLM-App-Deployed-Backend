@@ -26,7 +26,7 @@ db_name_new = os.environ['DATABASE_NAME_NEW']
 
 vector_store = PGVector(
     collection_name="collectionragappdeployed",
-    connection_string = f"postgresql+psycopg://{user}:{password}@{host}/{db_name}"
+    connection_string = f"postgresql+psycopg://{user}:{password}@{host}/{db_name}",
     embedding_function=OpenAIEmbeddings()
 )
 
