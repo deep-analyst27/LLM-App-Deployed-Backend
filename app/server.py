@@ -46,7 +46,7 @@ async def upload_files(files: list[UploadFile] = File(...)):
 @app.post("/load-and-process-pdfs")
 async def load_and_process_pdfs():
     try:
-        command = "C:/Users/DEEPAK/Documents/Generative-AI/LLM-RAG-DEPLOYED/my-llm-rag-deployed/Scripts/Activate.bat && python ./rag-data-loader/rag_load_and_process.py"
+        command = "python ./rag-data-loader/rag_load_and_process.py"
         subprocess.run(command, shell=True, check=True)
         return {"message": "PDFs loaded and processed successfully"}
     except subprocess.CalledProcessError as e:
