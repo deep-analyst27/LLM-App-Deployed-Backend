@@ -27,10 +27,18 @@ text_splitter = SemanticChunker(
 
 chunks = text_splitter.split_documents(documents=docs)
 
+user = os.environ['DATABASE_USER']
+password = os.environ['DATABASE_PASSWORD']
+host = os.environ['DATABASE_HOST']
+db_port = os.environ['DATABASE_PORT']
+db_name = os.environ['DATABASE_NAME']
+db_name_new = os.environ['DATABASE_NAME_NEW']
+
+
 PGVector.from_documents(
     documents=chunks,
     embedding=embeddings,
     collection_name="collectionragappdeployed",
-    connection_string="postgresql+psycopg://postgres:langsmith@localhost:5432/ragappdeployed",
+    connection_string=f"postgresql+psycopg://{user}:{password}@{host}:{db_port}/{db_name}",
     pre_delete_collection=True,
 )
